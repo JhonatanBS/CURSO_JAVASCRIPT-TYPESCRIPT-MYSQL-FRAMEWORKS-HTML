@@ -11,7 +11,11 @@ app.get("/sobre", function(req, res){
 
 app.get("/blog",function(req , res){
     res.send("<h1>Seja bem vindo ao meu Blog</h1>" + "<p>Sobre</p>");
-})
+});
+
+app.get("/saudacao/:nome/:cargo/:salario", function(req,res){
+    res.send("<p>Ola, meu nome é " + req.params.nome + " e trabalho como " + req.params.cargo + " e meu salário é " + req.params.salario + " reais");
+});
 
 //localhost:8081
 app.listen(8081,function(){
