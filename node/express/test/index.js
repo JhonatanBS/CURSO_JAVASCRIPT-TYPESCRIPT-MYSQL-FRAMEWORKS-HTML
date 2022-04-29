@@ -1,21 +1,33 @@
 const express = require("express");
 const app = express();
+const handlebars = require("express-handlebars");
 
-app.get("/" ,function(req,res){
-    res.send("Seja bem vindo ao meu app");
-});
+//Config
+  // Template Engine
+    app.engine("handlebars", handlebars({defaultLayout: "main"}));
+    app.set("view engine", "handlebars");
+  // Conexão com banco de dados Mysql
+    const Sequelize = require("sequelize");
+    const sequelize = new Sequelize("test", "root", "123456789",{
+        host: "localhost",
+        dialect: "mysql"
+    });
 
-app.get("/sobre", function(req, res){
-    res.send("Seja bem vindo ao Sobre");
-});
+// app.get("/" ,function(req,res){
+//     res.send("Seja bem vindo ao meu app");
+// });
 
-app.get("/blog",function(req , res){
-    res.send("<h1>Seja bem vindo ao meu Blog</h1>" + "<p>Sobre</p>");
-});
+// app.get("/sobre", function(req, res){
+//     res.send("Seja bem vindo ao Sobre");
+// });
 
-app.get("/saudacao/:nome/:cargo/:salario", function(req,res){
-    res.send("<p>Ola, meu nome é " + req.params.nome + " e trabalho como " + req.params.cargo + " e meu salário é " + req.params.salario + " reais");
-});
+// app.get("/blog",function(req , res){
+//     res.send("<h1>Seja bem vindo ao meu Blog</h1>" + "<p>Sobre</p>");
+// });
+
+// app.get("/saudacao/:nome/:cargo/:salario", function(req,res){
+//     res.send("<p>Ola, meu nome é " + req.params.nome + " e trabalho como " + req.params.cargo + " e meu salário é " + req.params.salario + " reais");
+// });
 
 //localhost:8081
 app.listen(8081,function(){
