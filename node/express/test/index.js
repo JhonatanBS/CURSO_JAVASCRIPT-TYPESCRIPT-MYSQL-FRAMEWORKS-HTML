@@ -4,13 +4,17 @@ const handlebars = require("express-handlebars");
 
 //Config
   // Template Engine
-    app.engine("handlebars", handlebars({defaultLayout: "main"}));
+    app.engine("handlebars", handlebars.engine({defaultLayout: 'main'}));
     app.set("view engine", "handlebars");
-  // Conexão com banco de dados Mysql
+//   Conexão com banco de dados Mysql
     const Sequelize = require("sequelize");
     const sequelize = new Sequelize("test", "root", "123456789",{
         host: "localhost",
         dialect: "mysql"
+    });
+
+    app.get("/cad", function(req, res){
+       res.render("formulario");
     });
 
 // app.get("/" ,function(req,res){
