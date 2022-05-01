@@ -17,6 +17,10 @@ const handlebars = require("express-handlebars");
        res.render("formulario");
     });
 
+    app.post("/add", function(req,res){
+        res.send("Formulario Recebido!");
+    });
+
 // app.get("/" ,function(req,res){
 //     res.send("Seja bem vindo ao meu app");
 // });
